@@ -6,21 +6,34 @@
   }
 ];
 
-class Users{
-    constructor () {
-        this.users = [];
+class Users {
+  constructor() {
+    this.users = [];
+  }
+  addUser(id, name, room) {
+    let user = { id, name, room };
+    this.users.push(user);
+    return user;
+  }
+  removeUser(id) {
+    let user = this.getUser(id);
+    if (user) {
+      this.users = this.users.filter(user => user.id !== id);
     }
-    addUser (id,name,room) {
-        let user = {id,name,room};
-        this.users.push(user);
-        return user;
-    }
+    return user;
+  }
+  getUser(id) {
+    return this.users.filter(user => user.id === id)[0];
+  }
+  getUsersList(room) {
+    let users = this.users.filter(user => user.room === room);
+    let nameArray = users.map(user => user.name);
+
+    return nameArray;
+  }
 }
 
-module.exports = {Users};
-
-
-
+module.exports = { Users };
 
 // class Person{
 //     constructor (name,age){
@@ -34,4 +47,3 @@ module.exports = {Users};
 
 // const mao = new Person("Morris",4);
 // const description = me.getUserDescription();
-
