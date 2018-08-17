@@ -37,7 +37,7 @@ describe("Users", () => {
   });
 
   it("should remove a user", () => {
-    let userId = "10";
+    let userId = "1";
     let user = users.removeUser(userId);
 
     expect(user.id).toBe(userId);
